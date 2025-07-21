@@ -8,6 +8,9 @@ config.json
 # Claude settings
 .claude/
 
+# Local files
+*.local.*
+
 # Task worktrees - NEVER commit actual task code
 tasks/*
 !tasks/.gitkeep
