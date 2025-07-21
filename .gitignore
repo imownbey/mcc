@@ -5,6 +5,9 @@ bun.lockb
 # Config
 config.json
 
+# Claude settings
+.claude/
+
 # Task worktrees - NEVER commit actual task code
 tasks/*
 !tasks/.gitkeep
