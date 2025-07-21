@@ -63,6 +63,7 @@ program
 program
   .command('sync')
   .description('Sync task metadata with remote repository')
+  .option('-r, --remote <remote>', 'Specify which remote to sync with (default: origin)')
   .action(syncCommand);
 
 program.addHelpText('after', `

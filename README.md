@@ -160,22 +160,31 @@ For privacy and separation of concerns, you can use two repositories:
 ### Setting up task syncing with a private repo:
 
 ```bash
-# In your MCC directory, initialize a separate git repo for tasks
+# Option 1: Two separate remotes in the same repository
 cd ~/code/mcc
-git init
 
-# Add your private remote for task metadata
+# Add a private remote for task metadata
 git remote add private git@github.com:yourusername/mcc-tasks-private.git
 
-# Create a .gitignore that only tracks tasks.json
-echo "/*" > .gitignore.private
-echo "!tasks.json" >> .gitignore.private
-echo "!.gitignore.private" >> .gitignore.private
+# Sync tasks to the private remote
+mcc sync --remote private
 
-# When syncing tasks, use:
+# Option 2: Separate git repository for tasks (more complex but cleaner)
+cd ~/code/mcc
+mkdir .tasks-repo
+cd .tasks-repo
+git init
+
+# Create symlink to tasks.json
+ln -s ../tasks.json tasks.json
+
+# Add private remote
+git remote add origin git@github.com:yourusername/mcc-tasks-private.git
+
+# Commit and push
 git add tasks.json
-git commit -m "Update tasks"
-git push private main
+git commit -m "Initial tasks"
+git push -u origin main
 ```
 
 This way:
