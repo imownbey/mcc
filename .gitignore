@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+bun.lockb
+
+# Config
+config.json
+
+# Task worktrees - NEVER commit actual task code
+tasks/*
+!tasks/.gitkeep
+
+# Task metadata - this will be in a separate private repo
+tasks.json
+
+# Build output
+mcc
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
