@@ -27,9 +27,8 @@ async function openMacTerminal(
   const command = `cd ${path} && claude`;
   
   if (terminal === 'ghostty' || (terminal === 'auto' && await isGhosttyInstalled())) {
-    // Use open with -n (new instance) and -e with shell: prefix to run claude
-    // shell: prefix allows us to use shell features like cd
-    await $`open -n -a Ghostty --args --working-directory=${path} -e "shell:claude"`;
+    // Use open with -n (new instance) and -e to run claude
+    await $`open -n -a Ghostty --args --working-directory=${path} -e claude`;
   } else if (terminal === 'iterm' || (terminal === 'auto' && await isITermInstalled())) {
     // Fixed AppleScript syntax
     await $`osascript -e 'tell application "iTerm" to create window with default profile'`;
